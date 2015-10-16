@@ -5,7 +5,7 @@
 
 function getInput() {
     console.log("Please choose either 'rock', 'paper', or 'scissors'.");
-    return prompt();
+    return prompt("Please choose either 'rock', 'paper', or 'scissors'.");
 }
 function randomPlay() {
     var randomNumber = Math.random();
@@ -60,30 +60,42 @@ function playToFive() {
     var computerWins = 0;
     while (playerWins < 5 && computerWins < 5) {
       var playerMove = getPlayerMove();
+      console.log('You Chose ' + playerMove + '.');
       var computerMove = getComputerMove();
-      console.log(computerMove);
+      console.log('Computer chooses ' + computerMove + '.');
       var roundWinner = getWinner(playerMove,computerMove);
     if (roundWinner==="Player" && playerWins < 5) {
       playerWins+=1;
       console.log('Humankind is victorious because ' + playerMove + ' triumphs over ' + computerMove + '!');
       console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
     }
-    else if (roundWinner=="Computer" && computerWins < 5) {
+    else if (roundWinner==="Computer" && computerWins < 5) {
       computerWins+=1;
-      console.log('Computer is superior because ' + computerMove + ' overrides ' + playerMove + '. Silly Human.');
+      console.log('Machines are superior because ' + computerMove + ' overrides ' + playerMove + '. Silly Human.');
       console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
     }
-    else if (roundWinner=="Tie") {
-      console.log('Tie');
-      console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
-    }
-    else if (roundWinner==='Player' && playerWins==5) {
-      console.log('Player Wins');
-      console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
-    }
-    else if (roundWinner==='Computer' && computerWins==5) {
-      console.log('Computer Wins');
+    else if (roundWinner==="Tie") {
+      console.log('It\'s a tie. Bow ties are cool.');
       console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
     }
     }
+    if (roundWinner==='Player' && playerWins===5) {
+      console.log(' __   _____  _   _  __      _____ _  _ ');
+      console.log(' \\ \\ / / _ \\| | | | \\ \\    / /_ _| \\| |');
+      console.log('  \\ V / (_) | |_| |  \\ \\/\\/ / | || .` |');
+      console.log('   |_| \\___/ \\___/    \\_/\\_/ |___|_|\\_|');
+      console.log('                                       ');
+      console.log('You learn kung fu. The machines are defeated.');
+      console.log('Final score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
+    }
+    else if (roundWinner==='Computer' && computerWins===5) {
+      console.log(' __   _____  _   _   _    ___  ___ ___ ');
+      console.log(' \\ \\ / / _ \\| | | | | |  / _ \\/ __| __|');
+      console.log('  \\ V / (_) | |_| | | |_| (_) \\__ \\ _| ');
+      console.log('   |_| \\___/ \\___/  |____\\___/|___/___|');
+      console.log('                                       ');
+      console.log('Machines reign supreme. \"You\'re a 100 years too early to take me on.\"');
+      console.log('Final score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
+    }
+    return [playerWins, computerWins];
  }
