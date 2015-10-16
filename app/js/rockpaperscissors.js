@@ -4,10 +4,12 @@
 'use strict';
 
 function getInput() {
+  //Prompts to enter a move.//
     console.log("Please choose either 'rock', 'paper', or 'scissors'.");
     return prompt("Please choose either 'rock', 'paper', or 'scissors'.");
 }
 function randomPlay() {
+  //Randomly picks a number below 1.0, and returns it.//
     var randomNumber = Math.random();
     if (randomNumber < 0.33) {
         return "rock";
@@ -17,9 +19,7 @@ function randomPlay() {
         return "scissors";
     }
 }
-////////////////////////////////////////////////
-/*           Write Your Code Below            */
-////////////////////////////////////////////////
+
 function getPlayerMove(move){
     return move || getInput();
 }
@@ -29,57 +29,66 @@ function getComputerMove(move) {
 }
 
 function getWinner(playerMove,computerMove) {
+  //Determines who the winner is.//
     var winner;
-    if (playerMove==="rock" && computerMove==="scissors") {
+    var playerMove = playerMove.toLowerCase();
+    if (playerMove === "rock" && computerMove === "scissors") {
         winner="Player";
-    }
-    else if (playerMove==="paper" && computerMove==="rock") {
+    } else if (playerMove === "paper" && computerMove === "rock") {
         winner = "Player";
-    }
-    else if (playerMove==="scissors" && computerMove==="paper") {
+    } else if (playerMove === "scissors" && computerMove === "paper") {
       winner="Player";
-    }
-    else if (playerMove==="rock" && computerMove==="paper") {
+    } else if (playerMove === "rock" && computerMove === "paper") {
         winner = "Computer";
-    }
-    else if (playerMove==="paper" && computerMove==="scissors") {
+    } else if (playerMove === "paper" && computerMove === "scissors") {
         winner = "Computer";
-    }
-    else if (playerMove==="scissors" && computerMove==="rock") {
+    } else if (playerMove === "scissors" && computerMove === "rock") {
       winner="Computer";
-    }
-    else {
+    } else if (playerMove === computerMove) {
       winner="Tie";
+    } else {
+      console.log("Ugly bag of moslty water. You did not enter 'rock', 'paper', or 'scissors'. Do not anger me!")
     }
     return winner;
 }
 
+function gameAmount() {
+  //This function sets the total points the will game go to.//
+  console.log("Please enter the number of points you would like to play till. ex. 1, 5, 25...")
+  return prompt("Please enter the number of points you would like to play till. ex. 1, 5, 25...");
+}
+
 function playToFive() {
+  //Runs rock, paper, scissors game till someone scores 5 points.//
     console.log("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
     var computerWins = 0;
-    while (playerWins < 5 && computerWins < 5) {
+    var gameRounds;
+    while (isNaN(gameRounds) === true) {
+      //Checks to see if the number of games is a numeral, and loops until one is entered.//
+      var gameRounds = gameAmount();
+    }
+    while (playerWins < gameRounds && computerWins < gameRounds) {
+      //Loops function till someone scroes 5 points.//
       var playerMove = getPlayerMove();
-      console.log('You Chose ' + playerMove + '.');
+      console.log('You Chose ' + playerMove.toLowerCase() + '.');
       var computerMove = getComputerMove();
       console.log('Computer chooses ' + computerMove + '.');
       var roundWinner = getWinner(playerMove,computerMove);
-    if (roundWinner==="Player" && playerWins < 5) {
-      playerWins+=1;
-      console.log('Humankind is victorious because ' + playerMove + ' triumphs over ' + computerMove + '!');
-      console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
+        if (roundWinner === "Player" && playerWins < gameRounds) {
+          playerWins+=1;
+          console.log('Humankind is victorious because ' + playerMove.toLowerCase() + ' triumphs over ' + computerMove + '!');
+          console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
+        } else if (roundWinner === "Computer" && computerWins < gameRounds) {
+          computerWins+=1;
+          console.log('Machines are superior because ' + computerMove + ' overrides ' + playerMove.toLowerCase() + '. Silly Human.');
+          console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
+        } else if (roundWinner === "Tie") {
+          console.log('It\'s a tie. Bow ties are cool.');
+          console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
+        }
     }
-    else if (roundWinner==="Computer" && computerWins < 5) {
-      computerWins+=1;
-      console.log('Machines are superior because ' + computerMove + ' overrides ' + playerMove + '. Silly Human.');
-      console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
-    }
-    else if (roundWinner==="Tie") {
-      console.log('It\'s a tie. Bow ties are cool.');
-      console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
-    }
-    }
-    if (roundWinner==='Player' && playerWins===5) {
+    if (roundWinner === 'Player') {
       console.log(' __   _____  _   _  __      _____ _  _ ');
       console.log(' \\ \\ / / _ \\| | | | \\ \\    / /_ _| \\| |');
       console.log('  \\ V / (_) | |_| |  \\ \\/\\/ / | || .` |');
@@ -87,15 +96,14 @@ function playToFive() {
       console.log('                                       ');
       console.log('You learn kung fu. The machines are defeated.');
       console.log('Final score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
-    }
-    else if (roundWinner==='Computer' && computerWins===5) {
+    } else if (roundWinner === 'Computer') {
       console.log(' __   _____  _   _   _    ___  ___ ___ ');
       console.log(' \\ \\ / / _ \\| | | | | |  / _ \\/ __| __|');
       console.log('  \\ V / (_) | |_| | | |_| (_) \\__ \\ _| ');
       console.log('   |_| \\___/ \\___/  |____\\___/|___/___|');
       console.log('                                       ');
-      console.log('Machines reign supreme. \"You\'re a 100 years too early to take me on.\"');
+      console.log('Machines reign supreme. You\'re a 100 years too early to fight me.');
       console.log('Final score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
     }
-    return [playerWins, computerWins];
+    return ['**** Final score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins + ' ****'];
  }
