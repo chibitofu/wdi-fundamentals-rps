@@ -1,6 +1,3 @@
-////////////////////////////////////////////////
-/*   Provided Code - Please Don't Edit   */
-////////////////////////////////////////////////
 'use strict';
 
 function getInput() {
@@ -47,7 +44,7 @@ function getWinner(playerMove,computerMove) {
     } else if (playerMove === computerMove) {
       winner="Tie";
     } else {
-      console.log("Ugly bag of moslty water. You did not enter 'rock', 'paper', or 'scissors'. Do not anger me!")
+      console.log("Ugly bag of moslty water. You did not enter 'rock', 'paper', or 'scissors'. Armus is angered!")
     }
     return winner;
 }
@@ -69,7 +66,7 @@ function playToFive() {
       var gameRounds = gameAmount();
     }
     while (playerWins < gameRounds && computerWins < gameRounds) {
-      //Loops function till someone scroes 5 points.//
+      //Loops function till someone wins enough points.//
       var playerMove = getPlayerMove();
       console.log('You Chose ' + playerMove.toLowerCase() + '.');
       var computerMove = getComputerMove();
@@ -89,6 +86,7 @@ function playToFive() {
         }
     }
     if (roundWinner === 'Player') {
+      //Prints "YOU WIN" with game results//
       console.log(' __   _____  _   _  __      _____ _  _ ');
       console.log(' \\ \\ / / _ \\| | | | \\ \\    / /_ _| \\| |');
       console.log('  \\ V / (_) | |_| |  \\ \\/\\/ / | || .` |');
@@ -97,6 +95,7 @@ function playToFive() {
       console.log('You learn kung fu. The machines are defeated.');
       console.log('Final score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
     } else if (roundWinner === 'Computer') {
+      //Prints "YOU LOSE" with game results//
       console.log(' __   _____  _   _   _    ___  ___ ___ ');
       console.log(' \\ \\ / / _ \\| | | | | |  / _ \\/ __| __|');
       console.log('  \\ V / (_) | |_| | | |_| (_) \\__ \\ _| ');
