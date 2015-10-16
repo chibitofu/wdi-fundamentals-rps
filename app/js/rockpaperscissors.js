@@ -4,7 +4,7 @@
 'use strict';
 
 function getInput() {
-    console.log("Please choose either 'rock', 'paper', or 'scissors'.")
+    console.log("Please choose either 'rock', 'paper', or 'scissors'.");
     return prompt();
 }
 function randomPlay() {
@@ -21,28 +21,36 @@ function randomPlay() {
 /*           Write Your Code Below            */
 ////////////////////////////////////////////////
 function getPlayerMove(move){
-    return move||getInput();
+    return move || getInput();
 }
 
 function getComputerMove(move) {
-    return move||randomPlay();
+    return move || randomPlay();
 }
 
 function getWinner(playerMove,computerMove) {
     var winner;
-    var playerMove=playerMove.toLowerCase();
-    var computerMove=computerMove.toLowerCase();
-    if (((playerMove=="rock")&&(computerMove=="scissors")) ||
-    ((playerMove=="paper")&&(computerMove=="rock")) ||
-    ((playerMove=="scissors")&&(computerMove=="paper"))){
+    if (playerMove==="rock" && computerMove==="scissors") {
+        winner="Player";
+    }
+    else if (playerMove==="paper" && computerMove==="rock") {
+        winner = "Player";
+    }
+    else if (playerMove==="scissors" && computerMove==="paper") {
       winner="Player";
-    }else if (((playerMove=="rock")&&(computerMove=="paper")) ||
-    ((playerMove=="paper")&&(computerMove=="scissors")) ||
-    ((playerMove=="scissors")&&(computerMove=="rock"))){
+    }
+    else if (playerMove==="rock" && computerMove==="paper") {
+        winner = "Computer";
+    }
+    else if (playerMove==="paper" && computerMove==="scissors") {
+        winner = "Computer";
+    }
+    else if (playerMove==="scissors" && computerMove==="rock") {
       winner="Computer";
-    }else {
+    }
+    else {
       winner="Tie";
-  }
+    }
     return winner;
 }
 
@@ -50,7 +58,32 @@ function playToFive() {
     console.log("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
     var computerWins = 0;
-    // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
-    /* YOUR CODE HERE */
-    return [playerWins, computerWins];
-}
+    while (playerWins < 5 && computerWins < 5) {
+      var playerMove = getPlayerMove();
+      var computerMove = getComputerMove();
+      console.log(computerMove);
+      var roundWinner = getWinner(playerMove,computerMove);
+    if (roundWinner==="Player" && playerWins < 5) {
+      playerWins+=1;
+      console.log('Humankind is victorious because ' + playerMove + ' triumphs over ' + computerMove + '!');
+      console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
+    }
+    else if (roundWinner=="Computer" && computerWins < 5) {
+      computerWins+=1;
+      console.log('Computer is superior because ' + computerMove + ' overrides ' + playerMove + '. Silly Human.');
+      console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
+    }
+    else if (roundWinner=="Tie") {
+      console.log('Tie');
+      console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
+    }
+    else if (roundWinner==='Player' && playerWins==5) {
+      console.log('Player Wins');
+      console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
+    }
+    else if (roundWinner==='Computer' && computerWins==5) {
+      console.log('Computer Wins');
+      console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
+    }
+    }
+ }
