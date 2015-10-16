@@ -29,6 +29,7 @@ function getWinner(playerMove,computerMove) {
   //Determines who the winner is.//
     var winner;
     var playerMove = playerMove.toLowerCase();
+    //Turns playerMove into all lowercase so it doesn't conflict with the function.//
     if (playerMove === "rock" && computerMove === "scissors") {
         winner="Player";
     } else if (playerMove === "paper" && computerMove === "rock") {
@@ -45,24 +46,24 @@ function getWinner(playerMove,computerMove) {
       winner="Tie";
     } else {
       console.log("Ugly bag of moslty water. You did not enter 'rock', 'paper', or 'scissors'. Armus is angered!")
-    }
+    } //This is displayed if an answer other than rock, paper or scissors is given.//
     return winner;
 }
 
 function gameAmount() {
-  //This function sets the total points the will game go to.//
+  //This function sets the total points the game will go to.//
   console.log("Please enter the number of points you would like to play till. ex. 1, 5, 25...")
   return prompt("Please enter the number of points you would like to play till. ex. 1, 5, 25...");
 }
 
 function playToFive() {
-  //Runs rock, paper, scissors game till someone scores 5 points.//
+  //Runs rock, paper, scissors game till someone scores enough points.//
     console.log("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
     var computerWins = 0;
     var gameRounds;
     while (isNaN(gameRounds) === true) {
-      //Checks to see if the number of games is a numeral, and loops until one is entered.//
+      //Checks to see if gameRounds is a numeral, and loops gameAmount until a numeral is entered.//
       var gameRounds = gameAmount();
     }
     while (playerWins < gameRounds && computerWins < gameRounds) {
