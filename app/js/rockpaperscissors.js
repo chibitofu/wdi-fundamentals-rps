@@ -41,10 +41,14 @@ function getWinner(playerMove,computerMove) {
     } else if (playerMove === "paper" && computerMove === "scissors") {
         winner = "Computer";
     } else if (playerMove === "scissors" && computerMove === "rock") {
-      winner="Computer";
+      winner = "Computer";
     } else if (playerMove === computerMove) {
-      winner="Tie";
+      winner = "Tie";
+    } else if (playerMove === "terminate") {
+      winner = "Terminate"
+      //Command to end program at any point in the game.//
     } else {
+      winner=null
       console.log("Ugly bag of moslty water. You did not enter 'rock', 'paper', or 'scissors'. Armus is angered!")
     } //This is displayed if an answer other than rock, paper or scissors is given.//
     return winner;
@@ -62,7 +66,7 @@ function playToFive() {
     var playerWins = 0;
     var computerWins = 0;
     var gameRounds;
-    while (isNaN(gameRounds) === true) {
+    while (isNaN(gameRounds) === true || gameRounds<=0) {
       //Checks to see if gameRounds is a numeral, and loops gameAmount until a numeral is entered.//
       var gameRounds = gameAmount();
     }
@@ -84,6 +88,9 @@ function playToFive() {
         } else if (roundWinner === "Tie") {
           console.log('It\'s a tie. Bow ties are cool.');
           console.log('Current score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
+        } else if (roundWinner === "Terminate") {
+          roundWinner = 'Computer';
+          computerWins = gameRounds;
         }
     }
     if (roundWinner === 'Player') {
@@ -94,7 +101,6 @@ function playToFive() {
       console.log('   |_| \\___/ \\___/    \\_/\\_/ |___|_|\\_|');
       console.log('                                       ');
       console.log('You learn kung fu. The machines are defeated.');
-      console.log('Final score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
     } else if (roundWinner === 'Computer') {
       //Prints "YOU LOSE" with game results//
       console.log(' __   _____  _   _   _    ___  ___ ___ ');
@@ -102,8 +108,7 @@ function playToFive() {
       console.log('  \\ V / (_) | |_| | | |_| (_) \\__ \\ _| ');
       console.log('   |_| \\___/ \\___/  |____\\___/|___/___|');
       console.log('                                       ');
-      console.log('Machines reign supreme. You\'re a 100 years too early to fight me.');
-      console.log('Final score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins);
+      console.log('Machines superior. Humans inferior.');
     }
     return ['**** Final score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins + ' ****'];
  }
