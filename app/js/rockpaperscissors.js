@@ -35,28 +35,28 @@ function getWinner(playerMove,computerMove) {
     } else if (playerMove === "paper" && computerMove === "rock") {
         winner = "Player";
     } else if (playerMove === "scissors" && computerMove === "paper") {
-      winner="Player";
+        winner="Player";
     } else if (playerMove === "rock" && computerMove === "paper") {
         winner = "Computer";
     } else if (playerMove === "paper" && computerMove === "scissors") {
         winner = "Computer";
     } else if (playerMove === "scissors" && computerMove === "rock") {
-      winner = "Computer";
+        winner = "Computer";
     } else if (playerMove === computerMove) {
-      winner = "Tie";
+        winner = "Tie";
     } else if (playerMove === "terminate") {
-      winner = "Terminate"
-      //Command to end program at any point in the game.//
+        winner = "Terminate"
+      //Input as player move to end the program.//
     } else {
-      winner=null
-      console.log("Ugly bag of moslty water. You did not enter 'rock', 'paper', or 'scissors'. Armus is angered!")
+        winner=null
+      console.log("Ugly bag of moslty water. You did not enter 'rock', 'paper', or 'scissors'. Armus is angered!");
     } //This is displayed if an answer other than rock, paper or scissors is given.//
     return winner;
 }
 
 function gameAmount() {
   //This function sets the total points the game will go to.//
-  console.log("Please enter the number of points you would like to play till. ex. 1, 5, 25...")
+  console.log("Please enter the number of points you would like to play till. ex. 1, 5, 25...");
   return prompt("Please enter the number of points you would like to play till. ex. 1, 5, 25...");
 }
 
@@ -70,6 +70,7 @@ function playToFive() {
       //Checks to see if gameRounds is a numeral, and loops gameAmount until a numeral is entered.//
       var gameRounds = gameAmount();
     }
+    console.log("*** You may type 'terminate' in the prompt to end the game. ***");
     while (playerWins < gameRounds && computerWins < gameRounds) {
       //Loops function till someone wins enough points.//
       var playerMove = getPlayerMove();
@@ -94,7 +95,7 @@ function playToFive() {
         }
     }
     if (roundWinner === 'Player') {
-      //Prints "YOU WIN" with game results//
+      //Prints "YOU WIN" with game results.//
       console.log(' __   _____  _   _  __      _____ _  _ ');
       console.log(' \\ \\ / / _ \\| | | | \\ \\    / /_ _| \\| |');
       console.log('  \\ V / (_) | |_| |  \\ \\/\\/ / | || .` |');
@@ -102,7 +103,7 @@ function playToFive() {
       console.log('                                       ');
       console.log('You learn kung fu. The machines are defeated.');
     } else if (roundWinner === 'Computer') {
-      //Prints "YOU LOSE" with game results//
+      //Prints "YOU LOSE" with game results.//
       console.log(' __   _____  _   _   _    ___  ___ ___ ');
       console.log(' \\ \\ / / _ \\| | | | | |  / _ \\/ __| __|');
       console.log('  \\ V / (_) | |_| | | |_| (_) \\__ \\ _| ');
@@ -110,5 +111,5 @@ function playToFive() {
       console.log('                                       ');
       console.log('Machines superior. Humans inferior.');
     }
-    return ['**** Final score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins + ' ****'];
+    return '*** Final score ' + 'Humans ' + playerWins + ' : ' + 'Machines ' + computerWins + ' ***';
  }
