@@ -74,7 +74,7 @@ function playToFive() {
     while (playerWins < gameRounds && computerWins < gameRounds) {
       //Loops function till someone wins enough points.//
       var playerMove = getPlayerMove();
-      console.log('You Chose ' + playerMove.toLowerCase() + '.');
+      console.log('You chose ' + playerMove.toLowerCase() + '.');
       var computerMove = getComputerMove();
       console.log('Computer chooses ' + computerMove + '.');
       var roundWinner = getWinner(playerMove,computerMove);
